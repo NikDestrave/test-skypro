@@ -1,5 +1,17 @@
-import ProductCards from './ProductCards'
+import ProductCard from './ProductCard'
 import {useState} from 'react'
+import Select from "../components/Select";
+
+const selectOptions = [
+  {
+    title: 'Порядок: сперва дешевле',
+    value: 'asc'
+  },
+  {
+    title: 'Порядок: сперва дороже',
+    value: 'desc'
+  },
+]
 
 const Content = ({products}) => {
   const [sortValue, setSortValue] = useState('asc')
@@ -13,7 +25,7 @@ const Content = ({products}) => {
   products.sort(sortValue === 'asc' ? sortAsc : sortDesc)
 
   const listItems = products.map(product => (
-    <ProductCards
+    <ProductCard
       key={product.id}
       title={product.title}
       description={product.description}
@@ -28,10 +40,7 @@ const Content = ({products}) => {
 
   return (
     <section className={'content-container'}>
-      <select className={'content-container__sort-select'} onChange={e => handleOptionClick(e.target.value)}>
-        <option value={'asc'}>Порядок: сперва дешевле</option>
-        <option value={'desc'}>Порядок: сперва дороже</option>
-      </select>
+      <Select options={selectOptions} onChange={handleOptionClick}/>
       <div className={'content-container__items'}>{listItems}</div>
     </section>
   )
