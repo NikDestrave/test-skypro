@@ -1,3 +1,5 @@
+import {Link} from "react-router-dom";
+
 const Header = () => {
   return (
     <header className={'header'}>
@@ -5,10 +7,10 @@ const Header = () => {
       <nav className="header__menu">
         <ul>
           <li>
-            <a href="#">Каталог</a>
+            <Link to="/">Каталог</Link>
           </li>
           <li>
-            <a href="#">Корзина</a>
+            <Link to="/basket">Корзина</Link>
           </li>
         </ul>
       </nav>

@@ -1,5 +1,6 @@
-import Header from "../views/Header";
-import Content from "../views/Content";
+import {useState} from 'react'
+import ProductCard from '../views/ProductCard'
+import Select from '../components/Select'
 
 const products = [
   {
@@ -46,12 +47,48 @@ const products = [
   },
 ]
 
+const selectOptions = [
+  {
+    title: 'Порядок: сперва дешевле',
+    value: 'asc',
+  },
+  {
+    title: 'Порядок: сперва дороже',
+    value: 'desc',
+  },
+]
+
 const Main = () => {
+  const [sortValue, setSortValue] = useState('asc')
+  const sortAsc = (a, b) => {
+    return a.price - b.price
+  }
+  const sortDesc = (a, b) => {
+    return b.price - a.price
+  }
+
+  products.sort(sortValue === 'asc' ? sortAsc : sortDesc)
+
+  const listItems = products.map(product => (
+    <ProductCard
+      key={product.id}
+      id={product.id}
+      title={product.title}
+      description={product.description}
+      image={product.image}
+      price={product.price}
+    />
+  ))
+
+  const handleOptionClick = e => {
+    setSortValue(e)
+  }
+
   return (
-    <>
-      <Header/>
-      <Content products={products}/>
-    </>
+    <section className={'content-container'}>
+      <Select options={selectOptions} onChange={handleOptionClick} />
+      <div className={'content-container__items'}>{listItems}</div>
+    </section>
   )
 }
 
