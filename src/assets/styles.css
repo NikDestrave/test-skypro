@@ -121,8 +121,32 @@ body {
   display: flex;
   gap: 33px;
 }
-.basket-list {
+.basket-wrapper {
   flex-grow: 1;
+}
+.basket-wrapper .bottom-table {
+  margin-top: 7px;
+  display: flex;
+  justify-content: flex-start;
+}
+.basket-wrapper .bottom-table a {
+  text-decoration: none;
+}
+.basket-wrapper .bottom-table .button {
+  margin: 0;
+  padding: 10px 20px;
+}
+.basket-wrapper .bottom-table .button.dark {
+  background: #000;
+  color: #FFF;
+}
+.basket-wrapper .bottom-table .button.dark:hover {
+  background: #343434;
+}
+.basket-wrapper .bottom-table .button:first-child {
+  margin-right: 7px;
+}
+.basket-list {
   display: grid;
   grid-template-columns: auto 100px;
   height: fit-content;
@@ -204,7 +228,8 @@ body {
 .basket-form .total-price b {
   font-weight: 500;
 }
-.basket-form__submit-button {
+
+.button {
   cursor: pointer;
   display: block;
   margin: 18px auto 0;
@@ -215,7 +240,7 @@ body {
   font-family: Montserrat, sans-serif;
   background: none;
 }
-.basket-form__submit-button:hover {
+.button:hover {
   background: #e7e7e7;
 }
 

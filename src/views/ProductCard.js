@@ -15,6 +15,7 @@ const ProductCard = ({id, image, title, description, price}) => {
       })
     }
     localStorage.setItem('basket', JSON.stringify(basket))
+    alert('Товар добавлен в корзину')
   }
 
   return (
